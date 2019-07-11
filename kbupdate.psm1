@@ -43,3 +43,6 @@ foreach ($function in (Get-ChildItem "$ModuleRoot\public" -Filter "*.ps1" -Recur
 if (-not $script:kbcollection) {
     $script:kbcollection = @{}
 }
+
+Set-Alias -Name Stop-Function -Value Stop-PSFFunction
+Set-Alias -Name Write-Message -Value Write-PSFMessage
