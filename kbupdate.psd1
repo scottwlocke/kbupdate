@@ -7,7 +7,7 @@
 #
 @{
     # Version number of this module.
-    ModuleVersion     = '1.0.12'
+    ModuleVersion     = '1.1.22'
 
     # ID used to uniquely identify this module
     GUID              = 'f292e190-ed32-4232-b9f3-b50b42a5655f'
@@ -19,17 +19,20 @@
     CompanyName       = 'Chrissy LeMaire'
 
     # Copyright statement for this module
-    Copyright         = '2019 Chrissy LeMaire'
+    Copyright         = '2020 Chrissy LeMaire'
 
     # Description of the functionality provided by this module
-    Description       = 'KB Viewer and Saver'
+    Description       = 'KB Viewer, Saver, Installer and Uninstaller'
 
     # Minimum version of the Windows PowerShell engine required by this module
     PowerShellVersion = '3.0'
 
     # Modules that must be imported into the global environment prior to importing this module
     RequiredModules   = @(
-        @{ ModuleName = 'PSFramework'; ModuleVersion = '1.0.19' }
+        # load up everything in Windows
+        @{ ModuleName = 'PSFramework'; ModuleVersion = '1.0.19' },
+        @{ ModuleName = 'kbupdate-library'; ModuleVersion = '1.0.20' },
+        @{ ModuleName = 'PSSQLite'; ModuleVersion = '1.0.3' }
     )
 
     # Script module or binary module file associated with this manifest.
@@ -37,7 +40,12 @@
 
     FunctionsToExport = @(
         'Get-KbUpdate',
-        'Save-KbUpdate'
+        'Save-KbUpdate',
+        'Connect-KbWsusServer',
+        'Get-KbInstalledUpdate',
+        'Install-KbUpdate',
+        'Uninstall-KbUpdate',
+        'Select-KbLatest'
     )
 
     PrivateData       = @{
